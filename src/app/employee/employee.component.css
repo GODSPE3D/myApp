@@ -1,0 +1,97 @@
+/* EmployeeComponent's private CSS styles */
+
+li {
+    display: flex;
+    margin: 5px;
+}
+
+.upload,
+.add {
+    padding: 8px;
+    width: 10%;
+    cursor: pointer;
+    border-radius: 6px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+.badge {
+    font-size: medium;
+}
+
+.add:hover {
+    cursor: not-allowed;
+}
+
+.add:not([disabled]):hover {
+    color: aliceblue;
+    cursor: pointer;
+    background-color: cornflowerblue;
+}
+
+#employee {
+    border: 1px solid black;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+/* table {
+    border: 1px solid black;
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+} */
+
+.uploaded-image img {
+    margin-left: 5px;
+    display: block;
+    height: auto;
+    width: 50%;
+    overflow: hidden;
+}
+
+tr,
+td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 10px;
+}
+
+.table-button {
+    width: 100%;
+    padding: 8px;
+    cursor: pointer;
+    border-radius: 6px;
+    /* background-color: white; */
+}
+
+#delete {
+    background-color: darkred;
+    color: white;
+}
+
+#details {
+    background-color: darkgreen;
+    color: white;
+}
+
+.alert.alert-danger {
+    color: red;
+}
+
+.image img {
+    height: 20%;
+    width: 20%;
+    overflow: hidden;
+}
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 80%;
+}

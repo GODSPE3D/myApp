@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 10px;
+    background-color: #F8F8FF;
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 2%;
+    font-size: medium;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}

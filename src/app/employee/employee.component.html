@@ -1,0 +1,70 @@
+<form class="example-form" [formGroup]="employeeForm">
+    <mat-form-field class="example-full-width" color="primary">
+        <mat-label>Firstname</mat-label>
+        <input type="text" matInput [formControl]="employeeForm.controls.firstname" [errorStateMatcher]="matcher" name="firstname" #firstName> @if (employeeForm.controls.firstname.hasError('firstname') && !employeeForm.controls.firstname.hasError('required'))
+        {
+        <mat-error>Please enter a valid firstname</mat-error>
+        } @if (employeeForm.controls.firstname.hasError('required')) {
+        <mat-error>Firstname is <strong>required</strong></mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" color="primary">
+        <mat-label>Lastname</mat-label>
+        <input type="text" matInput [formControl]="employeeForm.controls.lastname" [errorStateMatcher]="matcher" name="lastname" #lastName> @if (employeeForm.controls.lastname.hasError('lastname') && !employeeForm.controls.lastname.hasError('required'))
+        {
+        <mat-error>Please enter a valid lastname</mat-error>
+        } @if (employeeForm.controls.lastname.hasError('required')) {
+        <mat-error>Lastname is <strong>required</strong></mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" color="primary">
+        <mat-label>Email</mat-label>
+        <input type="email" matInput [formControl]="employeeForm.controls.email" [errorStateMatcher]="matcher" name="email" #email> @if (employeeForm.controls.email.hasError('email') && !employeeForm.controls.email.hasError('required')) {
+        <mat-error>Please enter a valid email address</mat-error>
+        } @if (employeeForm.controls.email.hasError('required')) {
+        <mat-error>Email is <strong>required</strong></mat-error>
+        }
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" color="primary">
+        <mat-label>Age</mat-label>
+        <input type="number" matInput [formControl]="employeeForm.controls.age" [errorStateMatcher]="matcher" name="age" min="18" #age> @if (employeeForm.controls.age.hasError('age') || !employeeForm.controls.email.hasError('min')) {
+        <mat-error>Please enter a valid age</mat-error>
+        } @if (employeeForm.controls.email.hasError('min')) {
+        <mat-error>Age should be <strong>more than 18</strong></mat-error>
+        }
+    </mat-form-field>
+
+    <input type="file" (change)="readUrl($event)" id="employeeImage" #employeeImage name="image" />
+    <button mat-raised-button color="warn" class="btn btn-danger" (click)="removeImage()" onclick="document.getElementById('employeeImage').value=''">Remove</button>
+    <div class="uploaded-image">
+        <img *ngIf="employeeForm.controls.image" [src]="url">
+    </div><br>
+
+    <button type="submit" mat-raised-button color="primary" (click)="add(employeeImage.value)" [disabled]="!firstName.value || !lastName.value || !email.value || age.valueAsNumber >= 18 "><mat-icon
+      aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon>Add Employee</button>
+</form>
+
+
+<table id="employee">
+    <thead>
+        <tr>
+            <td>Firstname</td>
+            <td>Lastname</td>
+            <td>Email</td>
+            <td colspan="2">Operations</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of employees">
+            <td>{{ emp.firstname }}</td>
+            <td>{{ emp.lastname }}</td>
+            <td>{{ emp.email }}</td>
+            <td><a routerLink="/detail/{{emp.emp_id}}"><button mat-raised-button class="table-button"
+            id="details">Details</button></a></td>
+            <td><button mat-raised-button class="table-button" id="delete" (click)="openDialog(emp)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
